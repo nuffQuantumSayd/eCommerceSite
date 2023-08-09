@@ -95,7 +95,7 @@ namespace eCommerceSite.Controllers
                 return RedirectToAction("Index");
             }
 
-            TempData["Message"] = gameToDelete.Title + " was already deleted";
+            TempData["Message"] = "This game was already deleted";
             return RedirectToAction("Index");
         }
     }

@@ -7,13 +7,13 @@ namespace eCommerceSite.Models
         [Key]
         public int MemberId { get; set; }
 
-        public int Email { get; set; }
+        public string Email { get; set; } = null!;
 
-        public int Password { get; set; }
+        public string Password { get; set; } = null!;
 
-        public int Phone { get; set; }
+        public int? Phone { get; set; }
 
-        public int Username { get; set; }
+        public string? Username { get; set; }
     }
 
     public class RegisterViewModel

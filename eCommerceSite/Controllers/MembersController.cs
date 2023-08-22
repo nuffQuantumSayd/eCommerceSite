@@ -40,5 +40,32 @@ namespace eCommerceSite.Controllers
 
             return View(regModel);
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel loginModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Member? m = (from member in _context.Members
+                            where member.Email == loginModel.Email &&
+                            member.Password == loginModel.Password
+                            select member).SingleOrDefault();
+
+                if (m != null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError(string.Empty, "Credentials not found!");
+            }
+
+            return View(loginModel);
+        }
     }
 }
